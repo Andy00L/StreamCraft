@@ -1,4 +1,3 @@
-import prisma from "@/app/lib/db";
 import {
   Card,
   CardContent,
@@ -8,31 +7,12 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
+import { postData } from "@/app/Functions";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { unstable_noStore as noStore } from "next/cache";
 import { SubmitButtons } from "../SubmitButtons";
 
-export default function InformationCard({
-  data,
-  user,
-}: {
-  data: any;
-  user: any;
-}) {
-  async function postData(formData: FormData) {
-    ("use server");
-    noStore();
-    const name = formData.get("name") as string;
-    await prisma.user.update({
-      where: {
-        id: user?.id,
-      },
-      data: {
-        name: name ?? undefined,
-      },
-    });
-  }
+export default function InformationCard({ data }: { data: any }) {
   return (
     <main className="pt-8 sm:pt-10 pb-16 container mx-auto max-w-6xl px-5 mb-32 sm:mb-0">
       <div className="grid items-start gap-8">
@@ -53,6 +33,7 @@ export default function InformationCard({
               Please provide general information about yourself. Please dont
               please to save.
             </CardDescription>
+
             <CardContent>
               <div className="space-y-2">
                 <div className="space-y-1">

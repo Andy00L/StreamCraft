@@ -1,8 +1,8 @@
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { unstable_noStore as noStore } from "next/cache";
 import { redirect } from "next/navigation";
 import Navbar from "../components/NavBar";
 import InformationCard from "../components/SettingsPage/GeneralDataCard";
-import { revalidatePath, unstable_noStore as noStore } from "next/cache";
 import prisma from "../lib/db";
 
 async function getUserSubscriptionDetails(userId: string) {
@@ -32,7 +32,7 @@ export default async function Settings() {
   return (
     <div className="relative  flex h-fit flex-col overflow-auto overflow-x-hidden bg-background text-foreground container mx-auto px-5 lg:px-10 ">
       <Navbar />
-      <InformationCard data={data} user={user} />
+      <InformationCard data={data} />
     </div>
   );
 }

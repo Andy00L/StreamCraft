@@ -6,9 +6,12 @@ import {
   getKindeServerSession,
 } from "@kinde-oss/kinde-auth-nextjs/server";
 import { CheckCircle2 } from "lucide-react";
+import { unstable_noStore as noStore } from "next/cache";
+
 import { PaymentPageButtons, SubmitButtons } from "../../SubmitButtons";
 
 export default async function ProPlan() {
+  noStore();
   const { getUser, isAuthenticated } = getKindeServerSession();
   const user = await getUser();
   return (
@@ -65,6 +68,7 @@ export default async function ProPlan() {
 }
 
 async function SubscriptionButtons() {
+  noStore();
   const { getUser } = await getKindeServerSession();
   const user = await getUser();
   const userprisma = await prisma.subscription.findUnique({
@@ -103,6 +107,7 @@ async function SubscriptionButtons() {
 }
 
 async function ButtonsChangement() {
+  noStore();
   const { getUser } = await getKindeServerSession();
   const user = await getUser();
   const userprisma = await prisma.subscription.findUnique({

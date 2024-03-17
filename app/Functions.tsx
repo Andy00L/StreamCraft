@@ -17,6 +17,7 @@ export async function createOrUpdateUserWithStripeCustomerId({
   firstName?: string | null;
   lastName?: string | null;
 }) {
+  "use server";
   if (id) {
     noStore();
     let user = await prisma.user.findUnique({
@@ -42,6 +43,7 @@ export async function createOrUpdateUserWithStripeCustomerId({
 }
 
 export async function getUserSubscriptionDetails(userId: string) {
+  "use server";
   noStore();
   return prisma.subscription.findUnique({
     where: { userId },
@@ -54,6 +56,7 @@ export async function getUserSubscriptionDetails(userId: string) {
 }
 
 export async function createSubscription(formData: FormData) {
+  "use server";
   noStore();
   const { getUser } = await getKindeServerSession();
   const subscriptionType = formData.get("Subscription") as string; // "annual" or "monthly"
@@ -97,6 +100,7 @@ export async function createSubscription(formData: FormData) {
 }
 
 export async function createCustomerPortal() {
+  "use server";
   noStore();
   const { getUser } = await getKindeServerSession();
   const user = await getUser();
@@ -118,4 +122,20 @@ export async function createCustomerPortal() {
   });
 
   return redirect(session.url);
+}
+
+// Functions de la page de settings
+export async function postData(formData: FormData) {
+  const { getUser } = await getKindeServerSession();
+  const user = await getUser();
+  noStore();
+  const name = formData.get("name") as string;
+  await prisma.user.update({
+    where: {
+      id: user?.id as string,
+    },
+    data: {
+      name: name ?? undefined,
+    },
+  });
 }
