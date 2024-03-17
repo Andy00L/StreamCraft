@@ -1,10 +1,10 @@
 "use server";
 
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { unstable_noStore as noStore } from "next/cache";
 import { redirect } from "next/navigation";
 import prisma from "./lib/db";
 import { getStripeSession, stripe } from "./lib/stripe";
-import { revalidatePath, unstable_noStore as noStore } from "next/cache";
 
 export async function createOrUpdateUserWithStripeCustomerId({
   email,
@@ -86,7 +86,10 @@ export async function createSubscription(formData: FormData) {
 
   const subscriptionUrl = await getStripeSession({
     customerId: dbUser.stripeCustomerId,
-    domainURL: process.env.DEVELOPMENT_URL as string,
+    domainURL:
+      process.env.NODE_ENV == "production"
+        ? (process.env.PRODUCTION_URL as string)
+        : (process.env.DEVELOPMENT_URL as string),
     priceId: priceId,
   });
 
@@ -108,7 +111,10 @@ export async function createCustomerPortal() {
 
   const session = await stripe.billingPortal.sessions.create({
     customer: subscriptionDetails.user.stripeCustomerId,
-    return_url: "http://localhost:3000/home",
+    return_url:
+      process.env.NODE_ENV == "production"
+        ? (process.env.PRODUCTION_URL as string)
+        : "http://localhost:3000/home",
   });
 
   return redirect(session.url);
