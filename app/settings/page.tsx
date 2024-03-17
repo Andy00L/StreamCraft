@@ -6,6 +6,7 @@ import { revalidatePath, unstable_noStore as noStore } from "next/cache";
 import prisma from "../lib/db";
 
 async function getUserSubscriptionDetails(userId: string) {
+  "use server";
   noStore();
   if (userId) {
     const data = await prisma.user.findUnique({
@@ -21,6 +22,7 @@ async function getUserSubscriptionDetails(userId: string) {
   }
 }
 export default async function Settings() {
+  noStore();
   const { getUser, isAuthenticated } = getKindeServerSession();
   const user = await getUser();
   const data = await getUserSubscriptionDetails(user?.id as string);
