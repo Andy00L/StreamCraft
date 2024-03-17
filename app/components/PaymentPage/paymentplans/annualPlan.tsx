@@ -12,8 +12,8 @@ import {
   getUserSubscriptionDetails,
 } from "@/app/Functions";
 import prisma from "@/app/lib/db";
+import { unstable_noStore as noStore } from "next/cache";
 import { PaymentPageButtons } from "../../SubmitButtons";
-import { revalidatePath, unstable_noStore as noStore } from "next/cache";
 
 export default async function AnnualPlan() {
   noStore();
@@ -30,7 +30,7 @@ export default async function AnnualPlan() {
         <div className="mt-6 mb-6">
           <div className="flex items-end">
             <p className="text-4xl font-semibold">$300</p>
-            <p className="text-lg opacity-70">/ month</p>
+            <p className="text-lg opacity-70">/ year</p>
           </div>
           <p className="text-lg mt-2 opacity-70">billed per year</p>
         </div>
