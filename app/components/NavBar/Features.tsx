@@ -11,7 +11,7 @@ export default function Features() {
   return (
     <>
       <DropdownMenu>
-        <DropdownMenuTrigger>Features </DropdownMenuTrigger>
+        <DropdownMenuTrigger>Features</DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuItem>
             <DropdownMenuLabel>

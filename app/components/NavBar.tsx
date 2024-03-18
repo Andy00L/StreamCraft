@@ -3,10 +3,9 @@ import Link from "next/link";
 import { default as MobileLogo } from "../../public/back-logo100x100.png";
 
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import { DropDownMenu } from "./DropDowMenu";
+import { unstable_noStore as noStore } from "next/cache";
 import Login from "./NavBar/Login";
 import UserNav from "./NavBar/UserNav";
-import { revalidatePath, unstable_noStore as noStore } from "next/cache";
 
 export default async function Navbar() {
   noStore();
@@ -29,7 +28,7 @@ export default async function Navbar() {
         </div>
 
         <UserNav />
-        {user ? <Login /> : <DropDownMenu />}
+        <Login />
       </header>
     </>
   );

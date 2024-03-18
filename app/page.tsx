@@ -1,9 +1,9 @@
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { unstable_noStore as noStore } from "next/cache";
 import { redirect } from "next/navigation";
 import { BentoGridDemo } from "./components/LandingPage/BemtoPage";
 import Description from "./components/LandingPage/Description";
 import Navbar from "./components/NavBar";
-import { revalidatePath, unstable_noStore as noStore } from "next/cache";
 
 export default async function SalePage() {
   noStore();

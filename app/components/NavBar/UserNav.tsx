@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { unstable_noStore as noStore } from "next/cache";
 import Link from "next/link";
 import Features from "./Features";
-import { revalidatePath, unstable_noStore as noStore } from "next/cache";
+import { NavigationMenuDemo } from "./NavigationsMenu";
 
 export default async function UserNav() {
   noStore();
@@ -28,11 +29,7 @@ export default async function UserNav() {
         </nav>
       ) : (
         <>
-          <nav className="flex items-center gap-4 text-sm font-medium ">
-            <Link href="/">Use Case</Link>
-            <Features />
-            <Link href="/payment">Pricing</Link>
-          </nav>
+          <NavigationMenuDemo />
         </>
       )}
     </div>
