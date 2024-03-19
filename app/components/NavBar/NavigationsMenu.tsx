@@ -52,7 +52,7 @@ export function NavigationMenuDemo() {
                     href="/comingSoon"
                   >
                     <div className="mb-2 mt-4 text-lg font-medium">
-                      StreamCraft
+                      Zealgene
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
                       Revolutionize marketing and content creation with AI

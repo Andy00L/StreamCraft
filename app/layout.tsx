@@ -8,9 +8,9 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "StreamCraft",
+  title: "Zealgene",
   description:
-    "StreamCraft: Revolutionary AI video creation & editing. Craft, extend, merge videos/images from prompts. Effortless, innovative content at your fingertips.",
+    "Zealgene: Revolutionary AI video creation & editing. Craft, extend, merge videos/images from prompts. Effortless, innovative content at your fingertips.",
 };
 
 export default function RootLayout({

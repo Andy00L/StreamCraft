@@ -16,9 +16,9 @@ import {
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { CardStackPlusIcon } from "@radix-ui/react-icons";
 import { DoorClosed, HomeIcon, Settings } from "lucide-react";
+import { unstable_noStore as noStore } from "next/cache";
 import Link from "next/link";
 import Features from "./Features";
-import { revalidatePath, unstable_noStore as noStore } from "next/cache";
 
 export default async function Login() {
   noStore();

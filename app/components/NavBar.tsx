@@ -23,7 +23,7 @@ export default async function Navbar() {
             />
           </Link>
           <span className="hidden font-bold sm:inline-block">
-            StreamCraft <span className="text-green-600">Beta</span>
+            Zealgene <span className="text-green-600">Beta</span>
           </span>
         </div>
 
