@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { default as MobileLogo } from "../../public/back-logo100x100.png";
+import { default as MobileLogo } from "../../public/zealgene -black.svg";
 
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { unstable_noStore as noStore } from "next/cache";
